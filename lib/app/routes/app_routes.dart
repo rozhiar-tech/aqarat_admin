@@ -7,6 +7,7 @@ abstract class Routes {
   static const ADD_PROPERTIES = _Paths.ADD_PROPERTIES;
   static const EDIT_PROPERTIES = _Paths.EDIT_PROPERTIES;
   static const CHATS = _Paths.CHATS;
+  static const CHAT_SCREEN = _Paths.CHAT_SCREEN;
 }
 
 abstract class _Paths {
@@ -15,4 +16,5 @@ abstract class _Paths {
   static const ADD_PROPERTIES = '/add-properties';
   static const EDIT_PROPERTIES = '/edit-properties';
   static const CHATS = '/chats';
+  static const CHAT_SCREEN = '/chat-screen';
 }

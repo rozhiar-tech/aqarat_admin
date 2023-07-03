@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/add_properties/bindings/add_properties_binding.dart';
 import '../modules/add_properties/views/add_properties_view.dart';
+import '../modules/chat_screen/bindings/chat_screen_binding.dart';
+import '../modules/chat_screen/views/chat_screen_view.dart';
 import '../modules/chats/bindings/chats_binding.dart';
 import '../modules/chats/views/chats_view.dart';
 import '../modules/edit_properties/bindings/edit_properties_binding.dart';
@@ -36,6 +38,11 @@ class AppPages {
       name: _Paths.CHATS,
       page: () => const ChatsView(),
       binding: ChatsBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHAT_SCREEN,
+      page: () => const ChatScreenView(),
+      binding: ChatScreenBinding(),
     ),
   ];
 }

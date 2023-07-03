@@ -10,6 +10,9 @@ dependencies:
   get: 4.6.5
   flutter: 
     sdk: flutter
+  firebase_core: ^2.14.0
+  cloud_firestore: ^4.8.2
+  image_picker: ^1.0.0
 
 dev_dependencies: 
   flutter_lints: 2.0.2
