@@ -10,6 +10,8 @@ import '../modules/edit_properties/bindings/edit_properties_binding.dart';
 import '../modules/edit_properties/views/edit_properties_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/login/bindings/login_binding.dart';
+import '../modules/login/views/login_view.dart';
 
 part 'app_routes.dart';
 
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.CHAT_SCREEN,
       page: () => const ChatScreenView(),
       binding: ChatScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.LOGIN,
+      page: () => const LoginView(),
+      binding: LoginBinding(),
     ),
   ];
 }

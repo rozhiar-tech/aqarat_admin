@@ -62,6 +62,21 @@ class HomeView extends GetView<HomeController> {
                         fixedSize: Size(200, 50),
                       ),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.toNamed('/login');
+                      },
+                      child: Text('Login'),
+                      style: ElevatedButton.styleFrom(
+                        primary: AppColors.goldColor,
+                        onPrimary: Colors.white,
+                        onSurface: Colors.grey,
+                        fixedSize: Size(200, 50),
+                      ),
+                    ),
                   ],
                 ),
               ));
