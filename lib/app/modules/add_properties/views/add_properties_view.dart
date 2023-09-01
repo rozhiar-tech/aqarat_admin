@@ -43,7 +43,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Text(
                       "Category",
@@ -96,7 +96,11 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                           ),
                         ],
                         onChanged: (value) {
-                          controller.category.value = value.toString();
+                          if (value == 1) {
+                            controller.category.value = "Rent";
+                          } else if (value == 2) {
+                            controller.category.value = "Buy";
+                          }
                         },
                       ),
                     ),
@@ -165,7 +169,13 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                           ),
                         ],
                         onChanged: (value) {
-                          controller.type.value = value.toString();
+                          if (value == 1) {
+                            controller.type.value = "Residential";
+                          } else if (value == 2) {
+                            controller.type.value = "Commercial";
+                          } else if (value == 3) {
+                            controller.type.value = "Tourism";
+                          }
                         },
                       ),
                     ),
@@ -248,7 +258,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                       height: 10,
                     ),
                     const Text(
-                      "Location",
+                      "Latitude & Longitude",
                       style: TextStyle(
                         color: AppColors.goldColor,
                         fontSize: 20,
@@ -258,29 +268,57 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Container(
-                      width: Get.width * 0.9,
-                      decoration: BoxDecoration(
-                        color: AppColors.whiteColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: TextFormField(
-                        controller: controller.addressController,
-                        decoration: InputDecoration(
-                          hintText: 'Location',
-                          hintStyle: TextStyle(
-                            color: AppColors.greenColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                        ),
-                      ),
-                    ),
                     const SizedBox(
                       height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: Get.width * 0.4,
+                          decoration: BoxDecoration(
+                            color: AppColors.whiteColor,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: TextFormField(
+                            keyboardType: TextInputType.number,
+                            controller: controller.latitudeController,
+                            decoration: InputDecoration(
+                              hintText: 'Latitude',
+                              hintStyle: TextStyle(
+                                color: AppColors.greenColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: Get.width * 0.4,
+                          decoration: BoxDecoration(
+                            color: AppColors.whiteColor,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: TextFormField(
+                            keyboardType: TextInputType.number,
+                            controller: controller.longitudeController,
+                            decoration: InputDecoration(
+                              hintText: 'Longitude',
+                              hintStyle: TextStyle(
+                                color: AppColors.greenColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     const Text(
                       "Vip",
@@ -435,8 +473,48 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                       ),
                       child: TextFormField(
                         controller: controller.areaController,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: 'Area',
+                          hintStyle: TextStyle(
+                            color: AppColors.greenColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "address",
+                      style: TextStyle(
+                        color: AppColors.goldColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      width: Get.width * 0.9,
+                      height: Get.height * 0.1,
+                      decoration: BoxDecoration(
+                        color: AppColors.whiteColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextFormField(
+                        keyboardType: TextInputType.multiline,
+                        maxLines: 5,
+                        textInputAction: TextInputAction.newline,
+                        controller: controller.addressController,
+                        decoration: InputDecoration(
+                          hintText: 'address',
                           hintStyle: TextStyle(
                             color: AppColors.greenColor,
                             fontSize: 20,
@@ -505,6 +583,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                       ),
                       child: TextFormField(
                         controller: controller.roomsController,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: 'Bedrooms',
                           hintStyle: TextStyle(
@@ -540,6 +619,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                       ),
                       child: TextFormField(
                         controller: controller.bathroomsController,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: 'Bathrooms',
                           hintStyle: TextStyle(
@@ -575,6 +655,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                       ),
                       child: TextFormField(
                         controller: controller.floorsController,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: 'Floors',
                           hintStyle: TextStyle(
@@ -610,6 +691,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                       ),
                       child: TextFormField(
                         controller: controller.bedroomsController,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: 'Bedrooms',
                           hintStyle: TextStyle(
@@ -623,11 +705,49 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "video Link",
+                      style: TextStyle(
+                        color: AppColors.goldColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      width: Get.width * 0.9,
+                      decoration: BoxDecoration(
+                        color: AppColors.whiteColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextFormField(
+                        controller: controller.videoController,
+                        decoration: InputDecoration(
+                          hintText: 'video Link',
+                          hintStyle: TextStyle(
+                            color: AppColors.greenColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Container(
                       height: Get.height * 0.06,
                       width: Get.width * 0.9,
                       decoration: BoxDecoration(
-                        color: AppColors.greenColor,
+                        color: AppColors.goldColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: TextButton(

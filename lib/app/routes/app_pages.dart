@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/add_projects/bindings/add_projects_binding.dart';
+import '../modules/add_projects/views/add_projects_view.dart';
 import '../modules/add_properties/bindings/add_properties_binding.dart';
 import '../modules/add_properties/views/add_properties_view.dart';
 import '../modules/chat_screen/bindings/chat_screen_binding.dart';
@@ -50,6 +52,11 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => const LoginView(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_PROJECTS,
+      page: () => const AddProjectsView(),
+      binding: AddProjectsBinding(),
     ),
   ];
 }

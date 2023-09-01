@@ -1,35 +1,41 @@
+import 'dart:ffi';
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
-class AddPropertiesController extends GetxController {
-  RxString title = 'Add'.obs;
-  RxString category = 'Rent'.obs;
-  RxString type = 'Commercial'.obs;
-  RxBool vip = false.obs;
+class AddProjectsController extends GetxController {
+  //TODO: Implement AddProjectsController
+  RxString title = 'Add Projects '.obs;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseStorage _storage = FirebaseStorage.instance;
+
+  // Define variables to store project data
+  RxString client = ''.obs;
+  RxString description = ''.obs;
+  RxDouble grassArea = 0.0.obs;
+  RxString location = ''.obs;
+  RxString name = ''.obs;
+  RxString videoUrl = ''.obs;
   RxString imageName = 'image'.obs;
   final ImagePicker picker = ImagePicker();
   File? image;
   List<AssetEntity> pickedImages = [];
-
   FirebaseStorage firebase_storage = FirebaseStorage.instance;
   TextEditingController descriptionController = TextEditingController();
-  TextEditingController priceController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
-  TextEditingController areaController = TextEditingController();
-  TextEditingController roomsController = TextEditingController();
-  TextEditingController bathroomsController = TextEditingController();
-  TextEditingController floorsController = TextEditingController();
-  TextEditingController bedroomsController = TextEditingController();
-  TextEditingController rwgaController = TextEditingController();
-  TextEditingController latitudeController = TextEditingController();
-  TextEditingController longitudeController = TextEditingController();
-  TextEditingController videoController = TextEditingController();
+  TextEditingController clientController = TextEditingController();
+  TextEditingController grassAreaController = TextEditingController();
+  TextEditingController locationController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController videoUrlController = TextEditingController();
+
+  // Function to save the project data to Firestore
 
   Future<void> getImageFromGallery() async {
     try {
@@ -47,7 +53,7 @@ class AddPropertiesController extends GetxController {
       for (AssetEntity asset in pickedImages) {
         final file = await asset.file;
         if (file != null) {
-          imageFiles.add(file);
+          imageFiles.add(file as File);
         }
       }
 
@@ -64,6 +70,7 @@ class AddPropertiesController extends GetxController {
 
   Future<void> sendDataToFirebase() async {
     // add validation here to see all fields are filled
+    User? user = _auth.currentUser;
     if (pickedImages.isEmpty) {
       Get.defaultDialog(
           title: 'Error',
@@ -73,18 +80,12 @@ class AddPropertiesController extends GetxController {
       return;
     }
 
-    if (descriptionController.text.isEmpty ||
-        priceController.text.isEmpty ||
-        addressController.text.isEmpty ||
-        areaController.text.isEmpty ||
-        roomsController.text.isEmpty ||
-        bathroomsController.text.isEmpty ||
-        floorsController.text.isEmpty ||
-        bedroomsController.text.isEmpty ||
-        rwgaController.text.isEmpty ||
-        latitudeController.text.isEmpty ||
-        longitudeController.text.isEmpty ||
-        videoController.text.isEmpty) {
+    if (clientController.text.isEmpty ||
+        descriptionController.text.isEmpty ||
+        grassAreaController.text.isEmpty ||
+        locationController.text.isEmpty ||
+        nameController.text.isEmpty ||
+        videoUrlController.text.isEmpty) {
       Get.defaultDialog(
           title: 'Error',
           middleText: 'Please fill all the fields ',
@@ -92,7 +93,7 @@ class AddPropertiesController extends GetxController {
           onConfirm: () => Get.back());
       return;
     }
-    final ref = FirebaseFirestore.instance.collection('properties');
+    final ref = FirebaseFirestore.instance.collection('projects');
     print('Sending data to Firebase');
 
     try {
@@ -128,21 +129,14 @@ class AddPropertiesController extends GetxController {
 
       // Add the property data to the main collection
       await propertyRef.set({
-        'category': category.value,
-        'type': type.value,
-        'vip': vip.value,
+        'client': clientController.text,
         'description': descriptionController.text,
-        'price': priceController.text,
-        'address': addressController.text,
-        'area': areaController.text,
-        'rooms': roomsController.text,
-        'bathrooms': bathroomsController.text,
-        'floors': floorsController.text,
-        'bedrooms': bedroomsController.text,
-        'rwgasore': rwgaController.text,
-        'latitude': double.parse(latitudeController.text),
-        'longtitude': double.parse(longitudeController.text),
-        'videoUrl': videoController.text,
+        'grassArea': int.parse(grassAreaController.text),
+        'location': locationController.text,
+        'name': nameController.text,
+        'videoUrl': videoUrlController.text,
+        'userId': user?.uid,
+        'createdAt': FieldValue.serverTimestamp(),
         'photos':
             imageUrls, // Assign the list of image URLs to the 'photos' field
       });
