@@ -94,7 +94,7 @@ class AddProjectsController extends GetxController {
       return;
     }
     final ref = FirebaseFirestore.instance.collection('projects');
-    print('Sending data to Firebase');
+   
 
     try {
       // Create a new document reference for the property
@@ -106,8 +106,7 @@ class AddProjectsController extends GetxController {
       for (AssetEntity asset in pickedImages) {
         final imageName = asset.title;
         final filePath = await asset.file;
-        print('Image name: $imageName');
-        print('File path: $filePath');
+        
 
         if (filePath != null) {
           // Upload the image to Firebase Storage

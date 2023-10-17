@@ -10,6 +10,8 @@ abstract class Routes {
   static const CHAT_SCREEN = _Paths.CHAT_SCREEN;
   static const LOGIN = _Paths.LOGIN;
   static const ADD_PROJECTS = _Paths.ADD_PROJECTS;
+  static const REQUESTS = _Paths.REQUESTS;
+  static const VIEW_REQUEST = _Paths.VIEW_REQUEST;
 }
 
 abstract class _Paths {
@@ -21,4 +23,6 @@ abstract class _Paths {
   static const CHAT_SCREEN = '/chat-screen';
   static const LOGIN = '/login';
   static const ADD_PROJECTS = '/add-projects';
+  static const REQUESTS = '/requests';
+  static const VIEW_REQUEST = '/view-request';
 }

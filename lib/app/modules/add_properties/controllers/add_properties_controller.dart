@@ -30,6 +30,7 @@ class AddPropertiesController extends GetxController {
   TextEditingController latitudeController = TextEditingController();
   TextEditingController longitudeController = TextEditingController();
   TextEditingController videoController = TextEditingController();
+  TextEditingController agentController = TextEditingController();
 
   Future<void> getImageFromGallery() async {
     try {
@@ -145,6 +146,8 @@ class AddPropertiesController extends GetxController {
         'videoUrl': videoController.text,
         'photos':
             imageUrls, // Assign the list of image URLs to the 'photos' field
+        'createdAt': FieldValue.serverTimestamp(),
+        'agent': agentController.text,
       });
 
       Get.defaultDialog(

@@ -207,7 +207,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         controller: controller.descriptionController,
                         decoration: InputDecoration(
                           hintText: 'Description',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: AppColors.greenColor,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -243,7 +243,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         controller: controller.priceController,
                         decoration: InputDecoration(
                           hintText: 'Price',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: AppColors.greenColor,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -285,7 +285,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                             controller: controller.latitudeController,
                             decoration: InputDecoration(
                               hintText: 'Latitude',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: AppColors.greenColor,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -307,7 +307,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                             controller: controller.longitudeController,
                             decoration: InputDecoration(
                               hintText: 'Longitude',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: AppColors.greenColor,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -476,7 +476,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: 'Area',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: AppColors.greenColor,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -490,7 +490,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(
+                    const Text(
                       "address",
                       style: TextStyle(
                         color: AppColors.goldColor,
@@ -498,7 +498,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Container(
@@ -515,7 +515,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         controller: controller.addressController,
                         decoration: InputDecoration(
                           hintText: 'address',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: AppColors.greenColor,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -529,7 +529,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(
+                    const Text(
                       "Rwga",
                       style: TextStyle(
                         color: AppColors.goldColor,
@@ -550,7 +550,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         controller: controller.rwgaController,
                         decoration: InputDecoration(
                           hintText: 'Rwga',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: AppColors.greenColor,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -586,7 +586,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: 'Bedrooms',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: AppColors.greenColor,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -622,7 +622,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: 'Bathrooms',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: AppColors.greenColor,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -658,7 +658,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: 'Floors',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: AppColors.greenColor,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -694,7 +694,43 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: 'Bedrooms',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
+                            color: AppColors.greenColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                      "Agent Phone",
+                      style: TextStyle(
+                        color: AppColors.goldColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      width: Get.width * 0.9,
+                      decoration: BoxDecoration(
+                        color: AppColors.whiteColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextFormField(
+                        controller: controller.agentController,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          hintText: 'Agent Phone',
+                          hintStyle: const TextStyle(
                             color: AppColors.greenColor,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -708,7 +744,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Text(
+                    const Text(
                       "video Link",
                       style: TextStyle(
                         color: AppColors.goldColor,
@@ -716,7 +752,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Container(
@@ -729,7 +765,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         controller: controller.videoController,
                         decoration: InputDecoration(
                           hintText: 'video Link',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: AppColors.greenColor,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -740,7 +776,7 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Container(

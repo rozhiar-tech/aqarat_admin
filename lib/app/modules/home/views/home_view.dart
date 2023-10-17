@@ -24,73 +24,88 @@ class HomeView extends GetView<HomeController> {
                     onPressed: () {
                       Get.toNamed('/add-properties');
                     },
-                    child: Text(controller.title.value),
                     style: ElevatedButton.styleFrom(
                       primary: AppColors.goldColor,
                       onPrimary: Colors.white,
                       onSurface: Colors.grey,
-                      fixedSize: Size(200, 50),
+                      fixedSize: const Size(200, 50),
                     ),
+                    child: Text(controller.title.value),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ElevatedButton(
                     onPressed: () {
                       Get.toNamed('/edit-properties');
                     },
-                    child: Text('Edit Properties'),
                     style: ElevatedButton.styleFrom(
                       primary: AppColors.goldColor,
                       onPrimary: Colors.white,
                       onSurface: Colors.grey,
-                      fixedSize: Size(200, 50),
+                      fixedSize: const Size(200, 50),
                     ),
+                    child: const Text('Edit Properties'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ElevatedButton(
                     onPressed: () {
                       Get.toNamed('/chats');
                     },
-                    child: Text('Chats'),
                     style: ElevatedButton.styleFrom(
                       primary: AppColors.goldColor,
                       onPrimary: Colors.white,
                       onSurface: Colors.grey,
-                      fixedSize: Size(200, 50),
+                      fixedSize: const Size(200, 50),
                     ),
+                    child: const Text('Chats'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ElevatedButton(
                     onPressed: () {
                       Get.toNamed('/login');
                     },
-                    child: Text('Login'),
                     style: ElevatedButton.styleFrom(
                       primary: AppColors.goldColor,
                       onPrimary: Colors.white,
                       onSurface: Colors.grey,
-                      fixedSize: Size(200, 50),
+                      fixedSize: const Size(200, 50),
                     ),
+                    child: const Text('Login'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ElevatedButton(
                     onPressed: () {
                       Get.toNamed('/add-projects');
                     },
-                    child: Text('Add Project'),
                     style: ElevatedButton.styleFrom(
                       primary: AppColors.goldColor,
                       onPrimary: Colors.white,
                       onSurface: Colors.grey,
-                      fixedSize: Size(200, 50),
+                      fixedSize: const Size(200, 50),
                     ),
+                    child: const Text('Add Project'),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.toNamed('/requests');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: AppColors.goldColor,
+                      onPrimary: Colors.white,
+                      onSurface: Colors.grey,
+                      fixedSize: const Size(200, 50),
+                    ),
+                    child: const Text('see requests'),
                   ),
                 ],
               ),
