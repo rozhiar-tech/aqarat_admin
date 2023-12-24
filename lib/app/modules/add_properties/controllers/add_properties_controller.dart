@@ -16,6 +16,7 @@ class AddPropertiesController extends GetxController {
   final ImagePicker picker = ImagePicker();
   File? image;
   List<AssetEntity> pickedImages = [];
+  var propertyId = 0;
 
   FirebaseStorage firebase_storage = FirebaseStorage.instance;
   TextEditingController descriptionController = TextEditingController();
@@ -31,6 +32,7 @@ class AddPropertiesController extends GetxController {
   TextEditingController longitudeController = TextEditingController();
   TextEditingController videoController = TextEditingController();
   TextEditingController agentController = TextEditingController();
+  TextEditingController idController = TextEditingController();
 
   Future<void> getImageFromGallery() async {
     try {
@@ -94,6 +96,8 @@ class AddPropertiesController extends GetxController {
       return;
     }
     final ref = FirebaseFirestore.instance.collection('properties');
+    final idRef =
+        FirebaseFirestore.instance.collection('id').doc("WLm4l29peqVFQk2Tc2wa");
     print('Sending data to Firebase');
 
     try {
@@ -148,6 +152,12 @@ class AddPropertiesController extends GetxController {
             imageUrls, // Assign the list of image URLs to the 'photos' field
         'createdAt': FieldValue.serverTimestamp(),
         'agent': agentController.text,
+        'id': propertyId++,
+      });
+      idRef.update({'id_number': propertyId++}).then((_) {
+        print("Document successfully updated!");
+      }).catchError((error) {
+        print("Error updating document: $error");
       });
 
       Get.defaultDialog(
@@ -166,10 +176,20 @@ class AddPropertiesController extends GetxController {
     }
   }
 
+  Future<void> getPropertyId() async {
+    await FirebaseFirestore.instance
+        .collection("id")
+        .doc("WLm4l29peqVFQk2Tc2wa")
+        .get()
+        .then((value) => propertyId = value['id_number'] as int);
+  }
+
   final count = 0.obs;
   @override
-  void onInit() {
+  Future<void> onInit() async {
     super.onInit();
+    await getPropertyId();
+    print(propertyId);
   }
 
   @override

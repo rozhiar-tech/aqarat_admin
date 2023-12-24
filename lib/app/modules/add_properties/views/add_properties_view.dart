@@ -741,6 +741,40 @@ class AddPropertiesView extends GetView<AddPropertiesController> {
                         ),
                       ),
                     ),
+                    const Text(
+                      "property id",
+                      style: TextStyle(
+                        color: AppColors.goldColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      width: Get.width * 0.9,
+                      decoration: BoxDecoration(
+                        color: AppColors.whiteColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextFormField(
+                        controller: controller.idController,
+                        enabled: false,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          hintText: '${controller.propertyId + 1}',
+                          hintStyle: const TextStyle(
+                            color: AppColors.greenColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                      ),
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
